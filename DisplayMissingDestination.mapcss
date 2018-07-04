@@ -1,0 +1,198 @@
+meta {
+    title: "DisplayMissingDestination";
+    version: "0.0.1";
+    author: "";
+    link: "";
+    watch-modified: true;
+}
+way[highway=motorway_link][!"destination"][!"destination:lanes"][!"destination:ref"][!"destination:ref:lanes"][!"destination:ref:to"][!"destination:ref:forward"][!"destination:ref:backward"]{
+    width: 10;
+    color: lime;
+    opacity: 0.3;
+    z-index: -5;
+}
+
+node[highway=motorway_junction][!"noref"][!"ref"] {
+    symbol-size:10;
+    symbol-shape: circle;
+    symbol-stroke-color: #00ffff;
+    symbol-fill-color: red;
+
+    text-halo-color: red;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 2;
+    text-offset-y: -2;
+    text: eval("noref");
+    z-index: 1;
+}
+node[highway=motorway_junction]["noref"][!"ref"] {
+    text-halo-color: green;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 2;
+    text-offset-y: -2;
+    text: eval("noref");
+    z-index: 1;
+}
+node[highway=motorway_junction]["ref"] {
+    text-halo-color: white;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: tag("ref");
+    z-index: 1;
+}
+node[highway=motorway_junction]["ref:right"]["ref:left"] {
+    text-halo-color: white;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/",tag("ref:left"),tag("ref:right"));
+    z-index: 1;
+}
+way[highway=motorway_link]["destination:backward"]["destination:forward"]["destination:ref:backward"]["destination:ref:forward"] {
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/",join("|", tag("destination:ref:forward"), tag("destination:ref:backward")),join("|", tag("destination:backward"),tag("destination:forward")));
+    z-index: 1;
+}
+
+way[highway=motorway_link]["destination"][!"destination:ref"]{
+    text-halo-color: red;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("", tag("destination"));
+    z-index: 1;
+}
+way[highway=motorway_link]["destination"]["destination:ref"]{
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/", tag("destination:ref"), tag("destination"));
+    z-index: 1;
+}
+way[highway=motorway_link]["destination"]["destination:ref"]["destination:symbol"=hospital]{
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/", tag("destination:ref"), tag("destination"), eval("[H]"));
+    z-index: 1;
+}
+way[highway=motorway_link]["destination"]["destination:ref"]["destination:symbol"=airport]{
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/", tag("destination:ref"), tag("destination"), eval("[✈]"));
+    z-index: 1;
+}
+way[highway=motorway_link][!"destination"]["destination:ref"]["destination:symbol"=hospital]{
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/", tag("destination:ref"), eval("[H]"));
+    z-index: 1;
+}
+way[highway=motorway_link][!"destination"]["destination:ref"]["destination:symbol"=airport]{
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("/", tag("destination:ref"), eval("[✈]"));
+    z-index: 1;
+}
+way[highway=motorway_link][!"destination"]["destination:ref"][!"destination:symbol"]{
+    text-halo-color: green;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("", tag("destination:ref"));
+    z-index: 1;
+}
+way[highway=motorway_link]["destination"]["destination:ref:to"] {
+    text-halo-color: orange;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join(" / ", tag("destination:ref:to"), tag("destination"));
+    z-index: 1;
+}
+way[highway=motorway_link][!"destination"]["destination:ref:to"] {
+    text-halo-color: orange;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("", tag("destination:ref:to"));
+    z-index: 1;
+}
+
+way[highway=motorway_link]["destination:lanes"]{
+    text-halo-color: red;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join("", tag("destination:lanes"));
+    z-index: 1;
+}
+
+way[highway=motorway_link]["destination:ref:lanes"] {
+    text-halo-color: white;
+    text-halo-radius: 2;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 10;
+    text-offset-y: -5;
+    text: join(" / ", tag("destination:ref:lanes"), tag("destination:lanes"));
+    z-index: 1;
+}

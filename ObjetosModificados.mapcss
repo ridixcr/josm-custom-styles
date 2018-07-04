@@ -1,0 +1,25 @@
+
+meta 
+{
+    title: "Modified objects";
+    description: "Highlight modified objects";
+    version: "0.1.6_2011-02-24";
+    author: "Sebastian Klein";
+    
+    watch-modified: true;
+}
+
+meta[lang=de]
+{
+    title: "Geänderte Objekte";
+    description: "Geänderte Objekte hervorheben";
+}
+
+node:modified::modified_layer 
+{
+    symbol-shape: circle;
+    symbol-size: 20;
+    symbol-fill-color: lime;
+    symbol-fill-opacity: 0.3;
+    z-index: -5;
+}

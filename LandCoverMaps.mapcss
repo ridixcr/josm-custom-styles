@@ -1,0 +1,118 @@
+meta 
+{
+    title: "Modified objects for Nodes";
+    version: "0.0.1";
+    author: "";    
+    watch-modified: true;
+}
+
+
+area[!date][source]{}
+area[date][!source]{}
+
+area[landcover=forestland]
+{
+    z-index: 1;   
+    fill-color: #00A000; 
+    fill-opacity:0.2;    
+}
+area[landcover=forestland][type=dense]{
+    color: #005dff;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+area[landcover=forestland][type=moderate]{
+    color: #c300ff;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+area[landcover=forestland][type=sparse]{
+    color: #ff005d;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+area[landcover=forestland][!type=dense][!type=moderate][!type=sparse]{
+    color: black;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+
+area[landcover=water]{
+    z-index: 1;
+    color: white; 
+    fill-color: #4C2FBB; 
+    fill-opacity:0.5;
+    opacity:0.5;
+    width: 1;
+    dashes: 10,4;
+
+}
+area[landcover=earth]{
+    z-index: 1;
+    color: white; 
+    fill-color: #90652F; 
+    fill-opacity:0.5;
+    opacity:0.5;
+    width: 1;
+    dashes: 10,4;
+}
+
+area[landcover=grassland]{
+    z-index: 1;
+    color: white; 
+    fill-color: #EFB349; 
+    fill-opacity:0.5;
+    opacity:0.5;
+    width: 1;
+    dashes: 10,4;
+}
+area[landcover=grassland][type=open]{
+    color: #005dff;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+area[landcover=grassland][type=partial]{
+    color: #c300ff;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+area[landcover=grassland][!type=open][!type=partial]{
+    color: black;     
+    opacity:0.5;
+    width: 2;
+    dashes: 10,4;
+}
+
+area[landcover=cropland]{
+    z-index: 1;
+    color: white; 
+    fill-color: #FFFF64; 
+    fill-opacity:0.5;
+    opacity:0.5;
+    width: 1;
+    dashes: 10,4;
+}
+area[landcover=wetland]{
+    z-index: 1;
+    color: white; 
+    fill-color: #00DC82; 
+    fill-opacity:0.5;
+    opacity:0.5;
+    width: 1;
+    dashes: 10,4;
+}
+area[landcover=built]{
+    z-index: 1;
+    color: white; 
+    fill-color: #C31400; 
+    fill-opacity:0.5;
+    opacity:0.5;
+    width: 1;
+    dashes: 10,4;
+}

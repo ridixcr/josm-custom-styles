@@ -1,0 +1,61 @@
+meta 
+{
+    title: "Modified objects for Nodes";
+    version: "0.0.1";
+    author: "";    
+    watch-modified: true;
+}
+
+node[amenity=kindergarten]:modified::modified_layer 
+{
+    symbol-shape: circle;
+    symbol-size: 20;
+    symbol-fill-color: #f442eb;
+    symbol-fill-opacity: 0.8;
+
+    text-halo-color: #f442eb;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 3;
+    text-offset-y: -5;
+    text: join("/",eval("⬅"),eval("👶🏫"));
+    z-index: -5;
+}
+node[amenity=school][isced:level=primary]:modified::modified_layer
+{
+    symbol-shape: circle;
+    symbol-size: 20;
+    symbol-fill-color: blue;
+    symbol-fill-opacity: 0.8;
+
+    text-halo-color: while;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: blue;
+    text-anchor-vertical: center;
+    text-offset-x: 3;
+    text-offset-y: -5;
+    text: join("/",eval("⬅"),eval("👦🏫"));
+    z-index: -5;
+}
+node[amenity=school]["isced:level"="secondary"]:modified::modified_layer,
+node[amenity=school]["isced:level"="primary;secondary"]:modified::modified_layer
+node[amenity=school]["isced:level"="secondary;primary"]:modified::modified_layer
+{
+    symbol-shape: circle;
+    symbol-size: 20;
+    symbol-fill-color: white;
+    symbol-fill-opacity: 0.8;
+
+    text-halo-color: while;
+    text-halo-radius: 3;
+    font-size: 12;
+    text-color: black;
+    text-anchor-vertical: center;
+    text-offset-x: 3;
+    text-offset-y: -5;
+    text: join("/",eval("⬅"),eval("👨‍🏫"));
+    z-index: -5;
+}
